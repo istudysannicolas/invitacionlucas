@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Lucas Adriano cumple 1 Año y se Bautiza! 🎈 - Bely y Beto</title>
+    <!-- Etiquetas para vista previa en WhatsApp y Redes Sociales -->
+    <meta property="og:title" content="¡Lucas Adriano cumple 1 Año y se Bautiza! 🎈">
+    <meta property="og:description" content="¡Te invitamos a la gran fiesta de Bely y Beto! Haz clic aquí para ver los detalles y confirmar tu asistencia.">
+    <!-- Cambia esta URL por una imagen cuadrada (ideal 400x400) que quieras que salga de portada -->
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1WFBGh6tYeChPNJgsL5cG8Z0rMY5-KdLC=w800"> 
+    <meta property="og:type" content="website">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka for a fun, cartoonish feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tone.js for cheerful sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        partyOrange: '#FF6600',
+                        betoBlue: '#0055FF',
+                        partyYellow: '#FFCC00',
+                        partyDarkBlue: '#002B80'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #fff9e6 0%, #e6f0ff 50%, #ffe6cc 100%);
+            overflow-x: hidden;
+        }
+        .bouncing {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+        .pulse-slow {
+            animation: pulseScale 3s infinite;
+        }
+        @keyframes pulseScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        /* Custom confetti dots */
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FF6600;
+            top: -10px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="text-gray-800 relative min-h-screen">
+
+    <!-- Floating Confetti Container -->
+    <div id="confetti-container" class="fixed inset-0 pointer-events-none overflow-hidden z-50"></div>
+
+    <!-- Background Music / Sound Toggle Header Bar -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 shadow-sm px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="bg-partyOrange text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider animate-pulse">¡Festejo Oficial!</span>
+            <span class="text-sm font-semibold text-gray-700 hidden sm:inline">Lucas Adriano 1er Aniversario y Bautizo</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="sound-btn" onclick="toggleSound()" class="bg-partyYellow text-gray-900 font-bold px-4 py-2 rounded-full shadow-md hover:bg-yellow-400 transition transform hover:scale-105 flex items-center gap-2 text-sm border-2 border-yellow-500">
+                <i id="sound-icon" class="fa-solid fa-volume-high"></i> <span id="sound-text">¡Activar Música!</span>
+            </button>
+            <a href="#rsvp" class="bg-partyOrange text-white font-bold px-4 py-2 rounded-full shadow-md hover:bg-orange-600 transition transform hover:scale-105 text-sm">
+                <i class="fa-solid fa-heart"></i> Confirmar Asistencia
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+
+        <!-- Main Title Content -->
+        <div class="inline-block bg-partyYellow text-gray-900 px-6 py-2 rounded-full font-bold text-lg sm:text-xl shadow-md mb-6 bouncing border-2 border-yellow-400">
+            🎉 ¡Ven a celebrar con nosotros! 🎉
+        </div>
+
+        <h1 class="text-5xl sm:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-partyOrange via-partyYellow to-betoBlue mb-4 drop-shadow-sm">
+            Lucas Adriano
+        </h1>
+
+        <p class="text-2xl sm:text-3xl font-bold text-gray-700 mb-6">
+            Celebra conmigo mi <span class="text-partyOrange underline decoration-partyYellow decoration-4">1er Aniversario y Bautizo</span>
+        </p>
+
+        <!-- Dedicated Section for the Guest of Honor Photo -->
+        <div class="my-10 max-w-lg mx-auto bg-white/95 backdrop-blur border-4 border-partyOrange rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-6 -right-6 bg-partyYellow text-gray-900 font-bold px-6 py-2 rounded-full transform rotate-12 shadow-md text-sm border-2 border-orange-400 z-10">
+                👑 ¡El Festejado! 👑
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-inner border-2 border-orange-200 bg-orange-50 mb-4 h-80 flex items-center justify-center">
+                <img src="https://lh3.googleusercontent.com/d/1WFBGh6tYeChPNJgsL5cG8Z0rMY5-KdLC=w800" alt="Lucas Adriano - Festejado" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/FF6600/ffffff?text=Lucas+Adriano'">
+            </div>
+            <h3 class="text-3xl font-extrabold text-partyOrange mb-1">Lucas Adriano</h3>
+            <p class="text-gray-600 font-medium">¡Te invita a su gran fiesta de Bely y Beto!</p>
+        </div>
+
+        <!-- Characters Banner / Illustration with exact requested main image -->
+        <div class="my-8 flex flex-wrap justify-center items-center gap-6">
+            <div class="bg-white/95 backdrop-blur border-4 border-partyYellow rounded-3xl p-6 shadow-2xl max-w-md w-full pulse-slow">
+                <div class="flex justify-center items-center mb-4 overflow-hidden rounded-2xl bg-orange-50 shadow-inner">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTfGgbghjHP8ysTfHa0DsqthodUcNBB5Wy46fI-CazWQ&s=10" alt="Bely y Beto Personajes" class="w-full h-72 object-contain" onerror="this.src='https://placehold.co/400x400/FF6600/ffffff?text=Bely+y+Beto'">
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">¡Gran Celebración!</h3>
+                <p class="text-gray-600 text-sm">Acompaña a Lucas Adriano a celebrar su primer aniversario y su bautizo con mucha música, juegos y diversión.</p>
+            </div>
+        </div>
+
+        <!-- Date & Time Highlights -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto my-10">
+            <div class="bg-white rounded-3xl p-6 shadow-xl border-b-8 border-partyOrange transform hover:-translate-y-1 transition">
+                <div class="text-partyOrange text-4xl mb-3"><i class="fa-solid fa-calendar-days"></i></div>
+                <h4 class="font-bold text-lg text-gray-700">Fecha</h4>
+                <p class="text-2xl font-extrabold text-gray-900 mt-1">26 de Diciembre</p>
+                <span class="text-xs bg-orange-100 text-partyOrange px-2 py-1 rounded-full font-semibold mt-2 inline-block">¡1er Aniversario y Bautizo!</span>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 shadow-xl border-b-8 border-betoBlue transform hover:-translate-y-1 transition">
+                <div class="text-betoBlue text-4xl mb-3"><i class="fa-solid fa-clock"></i></div>
+                <h4 class="font-bold text-lg text-gray-700">Hora</h4>
+                <p class="text-2xl font-extrabold text-gray-900 mt-1">7:00 PM</p>
+                <span class="text-xs bg-blue-100 text-betoBlue px-2 py-1 rounded-full font-semibold mt-2 inline-block">¡A bailar se ha dicho!</span>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 shadow-xl border-b-8 border-partyYellow transform hover:-translate-y-1 transition">
+                <div class="text-yellow-500 text-4xl mb-3"><i class="fa-solid fa-location-dot"></i></div>
+                <h4 class="font-bold text-lg text-gray-700">Lugar</h4>
+                <p class="text-xl font-extrabold text-gray-900 mt-1">Fun Planet Huinalá</p>
+                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-semibold mt-2 inline-block">Ver Ubicación abajo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer Section -->
+    <section class="py-10 px-4 bg-gradient-to-r from-partyOrange via-yellow-500 to-betoBlue text-white my-12 shadow-inner">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-8 drop-shadow">⏳ Faltan pocos días para la gran fiesta ⏳</h2>
+            <div id="countdown" class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 shadow-lg">
+                    <span id="days" class="text-4xl sm:text-5xl font-extrabold block">00</span>
+                    <span class="text-sm font-medium uppercase tracking-wider">Días</span>
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 shadow-lg">
+                    <span id="hours" class="text-4xl sm:text-5xl font-extrabold block">00</span>
+                    <span class="text-sm font-medium uppercase tracking-wider">Horas</span>
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 shadow-lg">
+                    <span id="minutes" class="text-4xl sm:text-5xl font-extrabold block">00</span>
+                    <span class="text-sm font-medium uppercase tracking-wider">Minutos</span>
+                </div>
+                <div class="bg-white/20 backdrop-blur-md rounded-2xl p-4 border border-white/30 shadow-lg">
+                    <span id="seconds" class="text-4xl sm:text-5xl font-extrabold block">00</span>
+                    <span class="text-sm font-medium uppercase tracking-wider">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characters & Fun Gallery Section -->
+    <section class="py-12 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-3">¡Los Amigos de Bely y Beto! 🎈</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lucas Adriano está súper emocionado de celebrar su primer año y bautizo acompañado de todos sus personajes favoritos de caricatura.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Character 1: Bely -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl text-center border-t-8 border-partyOrange transform hover:scale-105 transition">
+                <div class="w-32 h-32 bg-orange-100 rounded-full mx-auto flex items-center justify-center overflow-hidden mb-4 shadow-inner">
+                    <img src="https://lh3.googleusercontent.com/d/13a8bzwwsRxqzmRcHpKCuuKi9rAEJSLER=w500" alt="Bely" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/200x200/FF6600/ffffff?text=Bely'">
+                </div>
+                <h3 class="font-bold text-xl text-gray-900 mb-1">Bely</h3>
+                <p class="text-gray-500 text-sm">La líder alegre que pone a cantar y bailar a todos los niños.</p>
+            </div>
+
+            <!-- Character 2: Beto -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl text-center border-t-8 border-betoBlue transform hover:scale-105 transition">
+                <div class="w-32 h-32 bg-blue-100 rounded-full mx-auto flex items-center justify-center overflow-hidden mb-4 shadow-inner">
+                    <img src="https://lh3.googleusercontent.com/d/1uqhCjAUmADEEpguOHzp40K4ypMx2B8yd=w500" alt="Beto" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/200x200/0055FF/ffffff?text=Beto'">
+                </div>
+                <h3 class="font-bold text-xl text-gray-900 mb-1">Beto</h3>
+                <p class="text-gray-500 text-sm">El travieso y divertido que siempre nos hace reír.</p>
+            </div>
+
+            <!-- Character 3: Perrón -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl text-center border-t-8 border-partyYellow transform hover:scale-105 transition">
+                <div class="w-32 h-32 bg-yellow-100 rounded-full mx-auto flex items-center justify-center overflow-hidden mb-4 shadow-inner">
+                    <img src="https://lh3.googleusercontent.com/d/1Q4pv96DOcwIjS_mQ3rhfjKmn16mgK7IV=w500" alt="Perrón" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/200x200/FFCC00/ffffff?text=Perron'">
+                </div>
+                <h3 class="font-bold text-xl text-gray-900 mb-1">Perrón</h3>
+                <p class="text-gray-500 text-sm">¡Guau guau! El perrito juguetón que acompaña las aventuras.</p>
+            </div>
+
+            <!-- Character 4: Super Beto -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl text-center border-t-8 border-partyDarkBlue transform hover:scale-105 transition">
+                <div class="w-32 h-32 bg-blue-50 rounded-full mx-auto flex items-center justify-center overflow-hidden mb-4 shadow-inner">
+                    <img src="https://lh3.googleusercontent.com/d/11Uw6BPZpLi_JfDWUFXEOni7hfREU2HPl=w500" alt="Super Beto" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/200x200/002B80/ffffff?text=Super+Beto'">
+                </div>
+                <h3 class="font-bold text-xl text-gray-900 mb-1">Super Beto</h3>
+                <p class="text-gray-500 text-sm">Con sus superpoderes y canciones mágicas para la fiesta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Map Section -->
+    <section class="py-12 px-4 max-w-5xl mx-auto">
+        <div class="bg-white rounded-3xl p-8 shadow-2xl border-4 border-partyYellow grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+                <span class="bg-partyYellow text-gray-900 font-bold px-3 py-1 rounded-full text-xs uppercase">Ubicación del Evento</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-3 mb-4">¿Dónde nos vamos a reunir?</h2>
+                <p class="text-gray-600 mb-2"><i class="fa-solid fa-map-pin text-partyOrange mr-2"></i><strong>Fun Planet Huinalá</strong></p>
+                <p class="text-gray-600 mb-6 text-sm">Esq. Priv. Valterra Residencial, Av. Gaspar Castaño 501-L1-2, 66648 Cdad. Apodaca, N.L.</p>
+                <a href="https://www.google.com/maps/place/Fun+Planet+Huinala/@25.7242507,-100.1678967,17z/data=!3m1!4b1!4m6!3m5!1s0x8662e935ddc64271:0x62b1dc975722e367!8m2!3d25.7242459!4d-100.1653218!16s%2Fg%2F11td8kp6rp?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="inline-block bg-betoBlue text-white font-bold px-6 py-3 rounded-2xl shadow-lg hover:bg-blue-600 transition transform hover:scale-105">
+                    <i class="fa-solid fa-diamond-turn-right mr-2"></i> Abrir en Google Maps
+                </a>
+            </div>
+            <div class="bg-gradient-to-br from-blue-100 to-orange-100 rounded-2xl h-64 flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-blue-300">
+                <i class="fa-solid fa-map-location-dot text-6xl text-partyOrange mb-3"></i>
+                <h4 class="font-bold text-lg text-gray-700">Fun Planet Huinalá</h4>
+                <p class="text-xs text-gray-500 mt-1">Haz clic en el botón de al lado para ver la ubicación exacta y trazar tu ruta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Confirmation Section -->
+    <section id="rsvp" class="py-14 px-4 max-w-3xl mx-auto">
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border-t-8 border-partyOrange text-center">
+            <span class="bg-orange-100 text-partyOrange font-bold px-4 py-1 rounded-full text-sm inline-block mb-3">¡Confirma tu asistencia!</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">¿Nos acompañarás en mi 1er Aniversario y Bautizo?</h2>
+            <p class="text-gray-600 mb-8">Por favor confirma el número de adultos y niños que nos acompañarán para apartar tu lugar en la gran fiesta de Lucas Adriano.</p>
+
+            <form onsubmit="handleRSVP(event)" class="space-y-4 max-w-md mx-auto text-left">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Nombre de la Familia o Invitado:</label>
+                    <input type="text" id="guest-name" required placeholder="Ej. Familia Pérez" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-partyOrange">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Número de Adultos:</label>
+                        <input type="number" id="adult-count" min="0" value="1" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-partyOrange bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Número de Niños:</label>
+                        <input type="number" id="child-count" min="0" value="0" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-partyOrange bg-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Mensaje para Lucas Adriano (Opcional):</label>
+                    <textarea id="guest-message" rows="3" placeholder="¡Muchísimas felicidades en tu primer año y bautizo!" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-partyOrange"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-partyOrange via-yellow-500 to-betoBlue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition transform hover:scale-[1.02] text-lg">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Confirmación
+                </button>
+            </form>
+
+            <div id="rsvp-success" class="hidden mt-6 p-4 bg-green-100 text-green-800 rounded-2xl font-bold">
+                🎉 ¡Muchas gracias! Tu asistencia ha sido registrada con éxito para el 1er aniversario y bautizo de Lucas Adriano. ¡Te esperamos el 26 de Diciembre a las 7:00 PM en Fun Planet Huinalá!
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4 text-center mt-12">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold mb-2">Lucas Adriano - 1er Aniversario y Bautizo 🎈</h3>
+            <p class="text-gray-400 text-sm mb-4">Temática oficial de Bely y Beto • 26 de Diciembre • Fun Planet Huinalá</p>
+            <p class="text-xs text-gray-500">© 2026 Todos los derechos reservados. ¡Ven a celebrar con nosotros!</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Confetti Generator
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#FF6600', '#0055FF', '#FFCC00', '#FF3300', '#3366FF'];
+            for (let i = 0; i < 35; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.left = Math.random() * 100 + 'vw';
+                piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.width = Math.random() * 8 + 6 + 'px';
+                piece.style.height = piece.style.width;
+                piece.style.animationDuration = Math.random() * 3 + 2 + 's';
+                piece.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(piece);
+            }
+        }
+        createConfetti();
+
+        // Countdown Timer targeting December 26 at 7:00 PM (19:00)
+        function updateCountdown() {
+            const now = new Date();
+            let targetYear = now.getFullYear();
+            let targetDate = new Date(targetYear, 11, 26, 19, 0, 0); 
+            
+            if (now > targetDate) {
+                targetDate = new Date(targetYear + 1, 11, 26, 19, 0, 0);
+            }
+
+            const diff = targetDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // RSVP Form Submission Handler (Conectado a Google Sheets)
+        async function handleRSVP(event) {
+            event.preventDefault();
+            
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalHtml = btn.innerHTML;
+            
+            // Cambiar el botón a estado de carga
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Enviando...';
+            btn.disabled = true;
+
+            const name = document.getElementById('guest-name').value;
+            const adults = document.getElementById('adult-count').value;
+            const children = document.getElementById('child-count').value;
+            const message = document.getElementById('guest-message').value;
+
+            // Construir el objeto de datos
+            const data = {
+                name: name,
+                adults: adults,
+                children: children,
+                message: message
+            };
+
+            // URL de tu Web App de Apps Script
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxyeqJPJJRLjCfdh4dj42CDMKhN0zlZSGwqvIQsfIbVFMsycTDpoiwPZK7RPvxG63R3wg/exec';
+
+            if(name.trim() !== '') {
+                try {
+                    // Enviar los datos a Google Sheets
+                    await fetch(scriptURL, {
+                        method: 'POST',
+                        // El content-type text/plain evita problemas de bloqueo por CORS en el navegador
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    // Mostrar el mensaje de éxito y limpiar formulario
+                    document.getElementById('rsvp-success').classList.remove('hidden');
+                    event.target.reset();
+                    setTimeout(() => {
+                        document.getElementById('rsvp-success').scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                } catch (error) {
+                    console.error('Error al enviar:', error);
+                    // Usar un modal o notificación visual en lugar de alert()
+                    const successBox = document.getElementById('rsvp-success');
+                    successBox.classList.remove('hidden', 'bg-green-100', 'text-green-800');
+                    successBox.classList.add('bg-red-100', 'text-red-800');
+                    successBox.innerHTML = '⚠️ Hubo un problema al enviar tu confirmación. Por favor, intenta de nuevo.';
+                } finally {
+                    // Restaurar el botón a su estado original
+                    btn.innerHTML = originalHtml;
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        // Tone.js Sound Toggle & Cheerful Children's Birthday Party Melody
+        let isPlaying = false;
+        let synth, loop;
+
+        async function toggleSound() {
+            const icon = document.getElementById('sound-icon');
+            const text = document.getElementById('sound-text');
+
+            if (!isPlaying) {
+                await Tone.start();
+                
+                synth = new Tone.Synth({
+                    oscillator: { type: "sine" },
+                    envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 0.5 }
+                }).toDestination();
+
+                const melody = [
+                    "C4", "C4", "D4", "C4", "F4", "E4",
+                    "C4", "C4", "D4", "C4", "G4", "F4",
+                    "C4", "C4", "C5", "A4", "F4", "E4", "D4",
+                    "A#4", "A#4", "A4", "F4", "G4", "F4"
+                ];
+                let index = 0;
+
+                Tone.Transport.bpm.value = 135;
+
+                loop = new Tone.Loop(time => {
+                    synth.triggerAttackRelease(melody[index], "8n", time);
+                    index = (index + 1) % melody.length;
+                }, "4n").start(0);
+
+                Tone.Transport.start();
+                isPlaying = true;
+                icon.className = "fa-solid fa-volume-xmark";
+                text.innerText = "Apagar Música";
+            } else {
+                if(loop) loop.stop();
+                Tone.Transport.stop();
+                if(synth) synth.dispose();
+                isPlaying = false;
+                icon.className = "fa-solid fa-volume-high";
+                text.innerText = "¡Activar Música!";
+            }
+        }
+    </script>
+</body>
+</html>
